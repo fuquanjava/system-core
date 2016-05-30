@@ -1,0 +1,123 @@
+
+head first 设计模式
+===================================
+
+需求：做一个玩具系统(鸭子),通常有很多通用的方法，我们会定义一个父类 Duck，让各种不同的鸭子(子类)来继承一些duck的行为.
+
+Duck{
+    void quack(); // 嘎嘎
+    void display(); // 鸭子的外观展示抽象方法,具体的鸭子实现.
+}
+
+然后子类 继承
+
+RedHeadDuck extends Duck{
+
+  void display(){
+        // 红色的鸭子
+  }
+
+}
+
+后来项目需求变化，要求鸭子要能飞. 怎么办?
+
+最直接的就是在 Duck类中 增加 fly(); 方法. 那么有什么问题吗？
+
+问题：并不是所有的鸭子都能飞，比如说 橡皮鸭.
+
+当然 你可以覆盖 橡皮鸭的 fly() 方法,并不做任何的实现, 虽然也能解决问题，但是真的可行吗?
+
+如果都采用上面的方式，那么越来越多的鸭子需要空实现父类的方法,最大的问题 还是改一发 而动全身.
+
+
+怎么办，利用接口如何呢 ?
+
+interface Flyable{
+    void fly();
+}
+
+interface Quackable{
+    void quack();
+}
+
+这样的话，就要这么干了.
+
+RedHeadDuck extends Duck implements Flyable{
+
+    // 覆盖 fly()
+
+    // 覆盖 quack()
+}
+
+有问题吗？ 有，代码不能复用有没有,每个子类具体的 duck 都要实现 Flyable接口, 只要改下Flyable 每个实现都要改.
+
+问题归零
+
+1、继承能解决代码复用，但是鸭子的行为在子类不断的改变，并且让所有的子类都有相同的行为是不恰当的。
+2、接口能解决一部分问题，但代码不能复用(jdk8)可以。
+
+
+
+
+
+ 设计原则
+
+ 找出应用中 可能需要变化之处，把他们独立抽象起来，不需要和那些不需要变化的代码混在一起，和稳定的代码有区分，几乎所有的设计模式背后的
+ 精神所在，所有的模式都提供一套方法让"系统中的某部分不会影响其他部分".
+
+
+
+终极解决办法
+
+// 把经常变的行为抽象出来
+
+interface FlyBehavior {
+
+}
+
+interface QuackBehavior {
+
+
+}
+
+FlyWithWings impelemnts FlyBehavior{
+   // 实现鸭子飞行
+}
+
+FlyNoWay  impelemnts FlyBehavior{
+    // 不会飞 , 什么都不做
+
+}
+
+
+
+RedHeadDuck extends Duck{
+        FlyBehavior fly ;
+
+        setter(FlyBehavior);
+
+        void flyTry(){
+            // fly 飞.
+        }
+
+}
+
+
+
+彻底解决上面的问题:
+
+1. RedHeadDuck 针对于 接口 FlyBehavior 编程，解决依赖
+
+2. FlyBehavior 接口发生变化，不影响现有的RedHeadDuck类。
+
+3. FlyWithWings 的代码可以 在多个 duck 子类中复用.
+
+
+
+
+
+
+
+
+
+
