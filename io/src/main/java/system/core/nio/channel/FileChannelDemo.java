@@ -1,4 +1,4 @@
-package system.core.nio.api;
+package system.core.nio.channel;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
