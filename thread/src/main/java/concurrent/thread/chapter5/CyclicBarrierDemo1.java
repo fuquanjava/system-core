@@ -1,6 +1,5 @@
 package concurrent.thread.chapter5;
 
-import util.Print;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;

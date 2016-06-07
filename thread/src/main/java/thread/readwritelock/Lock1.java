@@ -1,6 +1,5 @@
 package thread.readwritelock;
 
-import util.Print;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -39,7 +38,7 @@ class D{
             lock.writeLock();
             Thread.sleep(3000);
             this.sum += i;
-            Print.now(" 执行######## 写 ############ 操作: sum= "+sum);
+            //Print.now(" 执行######## 写 ############ 操作: sum= "+sum);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -51,7 +50,7 @@ class D{
         try {
 //            lock.lock();
             lock.readLock();
-            Print.now(" 执行 读 操作: sum= "+sum);
+            //Print.now(" 执行 读 操作: sum= "+sum);
         }finally {
 //            lock.unlock();
             lock.readLock().unlock();

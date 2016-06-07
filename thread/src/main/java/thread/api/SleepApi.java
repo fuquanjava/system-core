@@ -1,6 +1,5 @@
 package thread.api;
 
-import util.Print;
 
 /**
  * hello.world 2015/6/14 17:51
@@ -26,7 +25,7 @@ public class SleepApi {
         @Override
         public void run() {
             synchronized (S.class) {
-                Print.now("start sleep ");
+                //Print.now("start sleep ");
                 try {
                     // 3s
                     Thread.sleep(3000000);
@@ -35,7 +34,7 @@ public class SleepApi {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Print.now(" run over ");
+                //Print.now(" run over ");
             }
         }
     }

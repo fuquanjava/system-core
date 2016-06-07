@@ -27,8 +27,11 @@
         <cglib.version>2.2</cglib.version>
         <asm.version>3.3.1</asm.version>
         <javassist.version>3.18.1-GA</javassist.version>
+        <io.netty.version>5.0.0.Alpha1</io.netty.version>
         <aopalliance.verison>1.0</aopalliance.verison>
         <guava.version>18.0</guava.version>
+        <logback.version>1.1.2</logback.version>
+        <protobuf.java.version>2.5.0</protobuf.java.version>
     </properties>
 
     <dependencyManagement>
@@ -70,6 +73,38 @@
                 <version>4.12</version>
             </dependency>
 
+            <!-- Netty -->
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${io.netty.version}</version>
+            </dependency>
+
+            <!--serializable-->
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf.java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-access</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
@@ -77,6 +112,21 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-access</artifactId>
         </dependency>
 
     </dependencies>

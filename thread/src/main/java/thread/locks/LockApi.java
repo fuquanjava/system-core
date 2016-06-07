@@ -1,6 +1,5 @@
 package thread.locks;
 
-import util.Print;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -54,7 +53,7 @@ class L implements Runnable {
         if (lock.tryLock()) {
             try {
 
-                Print.now("得到锁,开始sleep");
+                //Print.now("得到锁,开始sleep");
                 Thread.sleep(1000);
             }catch(InterruptedException e){
                 e.printStackTrace();
@@ -62,7 +61,7 @@ class L implements Runnable {
                 lock.unlock();
             }
         }else {
-            Print.now(" 得 锁失败了 ..");
+           // Print.now(" 得 锁失败了 ..");
         }
 
     }

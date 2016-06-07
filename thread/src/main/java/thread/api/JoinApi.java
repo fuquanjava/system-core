@@ -1,6 +1,5 @@
 package thread.api;
 
-import util.Print;
 
 /**
  * hello.world 2015/6/14 22:08
@@ -17,7 +16,7 @@ public class JoinApi {
 
         t.join(); //让当前线程等待
 //        t.start(); 不能在后面启动，失效.
-        Print.now(" main 线程");
+        //Print.now(" main 线程");
         /**
          *join方法是调用了Object的wait方法
          * wait方法会让线程进入阻塞状态，并且会释放线程占有的锁，并交出CPU执行权限。
@@ -35,7 +34,7 @@ public class JoinApi {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Print.now(" over ....");
+            //Print.now(" over ....");
         }
     }
 }
