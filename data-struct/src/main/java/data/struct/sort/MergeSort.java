@@ -8,62 +8,61 @@ import java.util.Arrays;
 public class MergeSort {
     public static void main(String[] args) {
         int[] data = new int[]{6, 5, 4, 3, 2, 1};
-        sort(data, 0, data.length - 1 ,"描述");
+        int[] tmp = new int[data.length];
+        sort(data, 0, data.length - 1, tmp);
 
         System.out.println(Arrays.toString(data));
     }
 
-    public static void sort(int[] arrays, int lo, int hi , String desc) {
-        System.err.println("lo:" + lo + ", hi:" + hi);
-        if (lo >= hi) {
-            System.out.println(desc+ " -- 退出条件 lo= " + lo + ", hi= " + hi);
-            return;
+    public static void sort(int[] arrays, int lo, int hi, int[] tmp) {
+        if (lo < hi) {
+
+            int mid = (lo + hi) >> 1; // 取中
+
+            sort(arrays, lo, mid, tmp);
+
+            sort(arrays, mid + 1, hi, tmp);
+
+            merge(arrays, lo, mid, hi, tmp);
         }
-        int mid = (lo + hi) >> 1;
-        // 左边排好序元素的位置.
-        sort(arrays, lo, mid, "左边");
-
-        //右边排好序元素的位置
-        sort(arrays, mid + 1, hi, "右边");
-
-        merge(arrays,lo, mid, hi);
     }
 
     /**
-     * @param arrays 待排序的数组对象
-     * @param lo   左数组的第一个元素的索引
-     * @param mid    左数组的最后一个元素的索引，mid+1是右数组第一个元素的索引
-     * @param hi  右数组最后一个元素的索引
+     * @param ary      待排序的数组
+     * @param left     左边的起始位置
+     * @param mid      右边的起始位置（也是中点位置)
+     * @param rightEnd 右边结束为止
+     * @param tmp      临时数组
      */
-    private static void merge(int[] arrays, int lo, int mid, int hi) {
-        int[] temp = new int[hi - lo + 1];
-        int i = lo;// 左指针
-        int j = mid + 1;// 右指针
-        int k = 0;
-
-        // 把较小的数先移到新数组中
-        while (i <= mid && j <= hi) {
-            if (arrays[i] < arrays[j]) {
-                temp[k++] = arrays[i++];
+    private static void merge(int[] ary, int left, int mid, int rightEnd, int[] tmp) {
+        int leftEnd = mid - 1; // 左边的结束位置
+        int totalElements = rightEnd - left + 1; // 总共待排序的的元素
+        int tmpStartIndex = left;
+        while (left <= leftEnd && mid <= rightEnd) {
+            if (ary[left] <= ary[mid]) {
+                tmp[tmpStartIndex++] = ary[left++];
             } else {
-                temp[k++] = arrays[j++];
+                tmp[tmpStartIndex++] = ary[mid++];
             }
         }
 
-        // 把左边剩余的数移入数组
-        while (i <= mid) {
-            temp[k++] = arrays[i++];
+        // left--leftEnd 或者 mid -- rightEnd 中有元素没有复制完毕
+
+        // 复制左边剩余的元素到 tmp
+        while (left <= leftEnd) {
+            tmp[tmpStartIndex++] = ary[left++];
         }
 
-        // 把右边边剩余的数移入数组
-        while (j <= hi) {
-            temp[k++] = arrays[j++];
+        // 复制右边剩余的元素到 tmp
+        while (mid <= rightEnd) {
+            tmp[tmpStartIndex++] = ary[mid++];
         }
 
-        // 把新数组中的数覆盖nums数组
-        for (int k2 = 0; k2 < temp.length; k2++) {
-            arrays[k2 + lo] = temp[k2];
+        // 复制完毕之后 需要把 tmp中的元素还原到 ary 中。
+        for (int i = 0; i < totalElements; i++, rightEnd--) {
+            ary[rightEnd] = tmp[rightEnd];
         }
+
 
     }
 }
