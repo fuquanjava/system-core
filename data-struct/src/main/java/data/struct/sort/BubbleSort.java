@@ -9,6 +9,12 @@ import java.util.Arrays;
  * fuquanemail@gmail.com 2016/6/13 16:45
  * description:
  * 1.0.0
+ * <p/>
+ * 冒泡排序原理:
+ * a 逐一比较数组中相邻的两个元素, 如果后面的数字小于前面的数字, 就交换先后元素.
+ * b 经过一个轮次的比较, 一定有一个最大的排在最后的位置.
+ * c 每次比较剩下的元素, 经过n-1次比较, 可以 实现排序
+ * 简单说: 比较相邻元素,大的向后交换
  */
 public class BubbleSort {
     static int a;
