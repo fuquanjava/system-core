@@ -12,9 +12,10 @@ import java.util.concurrent.TransferQueue;
  * 1.0.0
  */
 public class BlockingQueueApi {
-    // LinkedBlockingQueue : 无边界队列，往队列中存放元素是不会发生阻塞的 , 为了满足无边界队列存放元素的阻塞需求，TransferQueue就应运而生
+    // LinkedBlockingQueue : 默认队列的大小是 Integer.MAX_VALUE ， 所以称之为 无边界队列，往队列中存放元素是不会发生阻塞的。
     static final BlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
 
+    // TransferQueue:生产者会一直阻塞直到所添加到队列的元素被某一个消费者所消费（不仅仅是添加到队列里就完事）
     static final TransferQueue<Integer> transferQueue = new LinkedTransferQueue<>();
 
     public static class ProducerTask extends Thread {
