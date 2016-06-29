@@ -18,6 +18,8 @@ public class BlockingQueueApi {
     // TransferQueue:生产者会一直阻塞直到所添加到队列的元素被某一个消费者所消费（不仅仅是添加到队列里就完事）
     static final TransferQueue<Integer> transferQueue = new LinkedTransferQueue<>();
 
+    private static int queueSize = 10;
+
     public static class ProducerTask extends Thread {
         BlockingQueue<Integer> queue;
 
@@ -32,13 +34,26 @@ public class BlockingQueueApi {
             while (true) {
                 int num = random.nextInt();
                 try {
-                    System.err.println("producer num :" + num);
                     //queue.put(num);
 
                     // 此处阻塞，等待take()，poll()的发生, 如果没有 take(),或者 poll(), 该方法一直阻塞
-                    transferQueue.transfer(num);
-                    System.err.println("producer num  ok :" + num);
-                    Thread.sleep(1500);
+                    //transferQueue.transfer(num);
+
+                    // 插入一个元素到队列的尾部，this method will never block.
+                    //transferQueue.put(num);
+
+                    if (! transferQueue.tryTransfer(num)){
+                        if(transferQueue.size() < queueSize){
+                            transferQueue.put(num);
+                            System.err.println("producer put num  ok :" + num);
+                        }else {
+                            transferQueue.transfer(num);
+                            System.err.println("producer transfer num  ok :" + num);
+                        }
+                    }
+
+
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -59,10 +74,10 @@ public class BlockingQueueApi {
                 try {
                     Integer num = 0;
                     //num = queue.poll();
-                    //num = transferQueue.take();
+                    num = transferQueue.poll();
 
                     System.err.println("consumer num :" + num);
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
