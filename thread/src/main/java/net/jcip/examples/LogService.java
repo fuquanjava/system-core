@@ -25,11 +25,9 @@ public class LogService {
         this.loggerThread = new LoggerThread();
         this.writer = new PrintWriter(writer);
     }
-
     public void start() {
         loggerThread.start();
     }
-
     public void stop() {
         synchronized (this) {
             isShutdown = true;
@@ -45,7 +43,6 @@ public class LogService {
         }
         queue.put(msg);
     }
-
     private class LoggerThread extends Thread {
         public void run() {
             try {

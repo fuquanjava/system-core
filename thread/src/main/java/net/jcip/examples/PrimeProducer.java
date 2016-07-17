@@ -12,11 +12,9 @@ import java.util.concurrent.*;
  */
 public class PrimeProducer extends Thread {
     private final BlockingQueue<BigInteger> queue;
-
     PrimeProducer(BlockingQueue<BigInteger> queue) {
         this.queue = queue;
     }
-
     public void run() {
         try {
             BigInteger p = BigInteger.ONE;
@@ -26,7 +24,6 @@ public class PrimeProducer extends Thread {
             /* Allow thread to exit */
         }
     }
-
     public void cancel() {
         interrupt();
     }

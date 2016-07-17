@@ -17,7 +17,7 @@ public class LogWriter {
     private static final int CAPACITY = 1000;
 
     public LogWriter(Writer writer) {
-        this.queue = new LinkedBlockingQueue<String>(CAPACITY);
+        this.queue = new LinkedBlockingQueue<>(CAPACITY);
         this.logger = new LoggerThread(writer);
     }
 
