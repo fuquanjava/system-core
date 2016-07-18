@@ -11,7 +11,7 @@ import java.util.concurrent.TransferQueue;
  * description:
  * 1.0.0
  */
-public class BlockingQueueApi {
+public class TransferQueueApi {
     // LinkedBlockingQueue : 默认队列的大小是 Integer.MAX_VALUE ， 所以称之为 无边界队列，往队列中存放元素是不会发生阻塞的。
     static final BlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
 
@@ -39,7 +39,7 @@ public class BlockingQueueApi {
                     // 此处阻塞，等待take()，poll()的发生, 如果没有 take(),或者 poll(), 该方法一直阻塞
                     //transferQueue.transfer(num);
 
-                    // 插入一个元素到队列的尾部，this method will never block.
+                    // 插入一个元素到队列的尾部，As the queue is unbounded, this method will never block.
                     //transferQueue.put(num);
 
                     if (! transferQueue.tryTransfer(num)){
@@ -93,6 +93,6 @@ public class BlockingQueueApi {
 
         producerTask.start();
 
-        consumerTask.start();
+       // consumerTask.start();
     }
 }
