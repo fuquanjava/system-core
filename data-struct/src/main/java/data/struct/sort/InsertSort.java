@@ -47,7 +47,8 @@ public class InsertSort {
 
             wait_sort_element = ary[i];//取出i对应的元素
 
-            for (sortedIndex = i - 1; sortedIndex >= 0 && wait_sort_element < ary[sortedIndex]; sortedIndex--) {//比较元素 t<[j]
+            for (sortedIndex = i - 1; sortedIndex >= 0
+                    && wait_sort_element < ary[sortedIndex]; sortedIndex--) {//比较元素 t<[j]
                 ary[sortedIndex + 1] = ary[sortedIndex];//向后移动
                 b++;
                 logger.info("第{}次移动后的结果={}", b, Arrays.toString(ary));
