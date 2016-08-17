@@ -24,6 +24,8 @@ import java.util.List;
  * <p/>
  * <p/>
  * 1.0.0
+ *
+ * -verbose:gc -Xms20M  -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8
  */
 public class HeapOOM {
     static class OOMObject {
@@ -35,8 +37,8 @@ public class HeapOOM {
         int i = 0;
         while (true) {
 
-            list.add(new OOMObject());
             System.err.println(i++);
+            list.add(new OOMObject());
            // Thread.sleep(50);
 
 
