@@ -7,9 +7,16 @@ package staticclass;
  */
 public class ServiceB {
 
-    private static ServiceA serviceA = new ServiceA();
+    /* private static ServiceA serviceA = new ServiceA();
 
-    public static void callADoing(String name, String doing){
-        serviceA.doing(name, doing);
+     public static void callADoing(String name, String doing){
+         serviceA.doing(name, doing);
+     }
+ */
+    public static void main(String[] args) {
+        C c1 = new C();
+        C c2 = new C();
+        System.err.println(c1.a);
+        System.err.println(c2.a);
     }
 }

@@ -17,6 +17,7 @@
         <module>jvm</module>
         <module>oop</module>
         <module>data-struct</module>
+        <module>refactor</module>
     </modules>
     <properties>
         <!-- 文件拷贝时的编码 -->

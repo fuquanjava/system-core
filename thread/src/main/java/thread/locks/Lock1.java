@@ -59,6 +59,8 @@ class MyLock{
     public synchronized void lock() throws InterruptedException {
         while(isLock){
             this.wait();
+
+
         }
         isLock=Boolean.TRUE;
 
