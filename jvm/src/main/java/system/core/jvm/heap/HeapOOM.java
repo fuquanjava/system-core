@@ -39,7 +39,7 @@ public class HeapOOM {
 
             System.err.println(i++);
             list.add(new OOMObject());
-           // Thread.sleep(50);
+            Thread.sleep(100);
 
 
         }
