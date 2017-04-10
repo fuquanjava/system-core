@@ -5,7 +5,9 @@ package system.core.jvm.clazz;
  * description:
  */
 public class ClassCode {
+
     public static void main(String[] args) {
+
         int i = 1;
         int j = 2;
 

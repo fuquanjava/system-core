@@ -1,0 +1,44 @@
+
+1. enum 比较问题
+
+How do I compare two enum in Java? Should I use == operator or equals() method?
+What is difference between comparing enum with == and equals() method are some of the tricky Java questions.
+
+Until you have solid knowledge of Enum in Java, It can be difficult to answer these question with confidence.
+
+By the way unlike comparing String in Java, you can use both == and equals() method to compare Enum,
+
+they will produce same result because equals() method of Java.lang.Enum internally uses == to compare enum in Java.
+
+Since every Enum in Java implicitly extends java.lang.Enum ,and since equals() method is declared final,
+
+there is no chance of overriding equals method in user defined enum.
+
+
+ If you are not just checking whether two enum are equal or not, and rather interested in order of different instance of Enum,
+
+ than you can use compareTo() method of enum to compare two enums. Java.lang.Enum implements Comparable interface and implements compareTo() method.
+
+Natural order of enum is defined by the order they are declared in Java code and same order is returned by ordinal() method.
+
+
+枚举的比较用 == ，因为 所有的枚举继承 java.lang.Enum,在java.lang.Enum里面的 equals 方法
+public final boolean equals(Object other) {
+        return this==other;
+    }
+
+    所以使用 equals同 == 。
+
+那到底用 equals 还是 == 呢 ？用 == 的好处(以下仅对枚举类型生效)：
+
+1.  equals 会出现NPE .
+
+    Enum a = ...
+    Enum b = null;
+
+    b.equals(a) ;   // NPE
+    b == a ;        // false
+
+2. == 能够在编译的时候 就检测类型安全，也就是 == 两边的类型 是否匹配。
+
+3. == 比 equals更快。
