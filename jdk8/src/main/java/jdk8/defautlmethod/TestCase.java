@@ -17,23 +17,27 @@ public class TestCase {
         DefaultMethod.sayHi();
     }
 
-    //第一种方法引用是构造方法引用，语法是：Class::new ，对于泛型来说语法是：Class<T >::new，请注意构造方法没有参数:
+    /**
+     * 第一种方法引用是构造方法引用，语法是：Class::new ，对于泛型来说语法是：Class<T >::new，请注意构造方法没有参数:
+     */
     @Test
     public void t2(){
-
         Car car = Car.create(Car::new);
-
         System.out.println(car);
     }
 
-    //第二种方法引用是静态方法引用，语法是：Class::static_method请注意这个静态方法只支持一个类型为Car的参数。
+    /**
+     * 第二种方法引用是静态方法引用，语法是：Class::static_method请注意这个静态方法只支持一个类型为Car的参数。
+     */
     @Test
     public void t3(){
         Car car = Car.create(Car::new);
         Collections.singletonList(car).forEach(Car::collide);
     }
 
-    //第三种方法引用是类实例的方法引用，语法是：Class::method请注意方法没有参数。
+    /**
+     * 第三种方法引用是类实例的方法引用，语法是：Class::method请注意方法没有参数。
+     */
     @Test
     public void t4(){
         Car car = Car.create(Car::new);
