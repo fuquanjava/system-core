@@ -43,6 +43,9 @@ public class Demo1 {
         String s1 = "abc";
         getList().forEach(e -> System.err.println(s1 + ":::" + e));
 
+        //当 lambda 的参数只有一个而且它的类型可以被推导得知时，该参数列表外面的括号可以被省略：
+        getList().forEach(e-> System.out.print(e));
+
 
 //        Lambda表达式可能会有返回值，编译器会根据上下文推断返回值的类型。如果lambda的语句块只有一行，不需要return关键字。下面两个写法是等价的：
         getList().sort((e1, e2) -> e1.compareTo(e2));
