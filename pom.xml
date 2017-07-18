@@ -11,13 +11,13 @@
     <modules>
         <module>design</module>
         <module>thread</module>
-        <module>util</module>
         <module>api</module>
         <module>io</module>
         <module>jvm</module>
         <module>oop</module>
         <module>data-struct</module>
         <module>refactor</module>
+        <module>guava</module>
     </modules>
     <properties>
         <!-- 文件拷贝时的编码 -->
@@ -118,6 +118,39 @@
                 <version>1.14.4</version>
                 <scope>provided</scope>
             </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>3.9</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+            </dependency>
+
+
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.3</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.json/json -->
+            <dependency>
+                <groupId>com.googlecode.json-simple</groupId>
+                <artifactId>json-simple</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+
 
         </dependencies>
 

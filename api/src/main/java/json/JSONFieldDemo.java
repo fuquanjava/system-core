@@ -39,7 +39,7 @@ public class JSONFieldDemo {
 
         SerializeFilter[] filters = new SerializeFilter[2];
         filters[0] = new MyNameFilter();
-        filters[1] = new MyAfterFilter();
+        filters[1] = new ValueFilter();
 
         System.out.printf(JSON.toJSONString(foo,filters));
 

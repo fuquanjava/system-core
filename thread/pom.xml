@@ -12,10 +12,6 @@
     <artifactId>thread</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>system.core</groupId>
-            <artifactId>util</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+
     </dependencies>
 </project>
